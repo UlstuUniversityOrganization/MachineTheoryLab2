@@ -23,7 +23,7 @@ int main()
 	std::string operand1Str = std::string(&input[pointer], &input[pointer] + operandLength);
 	pointer += operandLength;
 	std::string operand2Str = std::string(&input[pointer], &input[pointer] + operandLength);
-	if (commandStr.find_first_not_of("01") != std::string::npos)
+	if (commandStr.find_first_not_of("01") != std::string::npos) // Проверить, соответстует ли существующим командам
 	{
 		std::cout << "Incorrect operation code" << std::endl;
 		return -1;
@@ -36,7 +36,7 @@ int main()
 	int command = std::bitset<32>(commandStr).to_ulong();
 	long long operand1 = std::bitset<64>(operand1Str).to_ullong();
 	long long operand2 = std::bitset<64>(operand2Str).to_ullong();
-	float result = 0;
+	int result = 0;
 	if (command == devision)
 	{
 		if (operand2 == 0)
@@ -44,7 +44,7 @@ int main()
 			std::cout << "Devision by zero" << std::endl;
 			return -1;
 		}
-		result = operand1 / (float)operand2;
+		result = operand1 / operand2;
 	}
 	else if (command == multiplication)
 		result = operand1 * operand2;
